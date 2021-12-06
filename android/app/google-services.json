@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1035741054477",
+    "project_id": "signin-adad5",
+    "storage_bucket": "signin-adad5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035741054477:android:3825c05822160850e73744",
+        "android_client_info": {
+          "package_name": "com.zian.googlesignin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1035741054477-oab5gur96clj1cnpipe3s786d4g9eepi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_JvKjtGNPtCS0poXKGa9NLeTHG7JCCJ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1035741054477-oab5gur96clj1cnpipe3s786d4g9eepi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

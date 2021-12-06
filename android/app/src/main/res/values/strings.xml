@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="app_name">googlesignin</string> 
+<string name="facebook_app_id">594424601842212</string> 
+<string name="fb_login_protocol_scheme">fb594424601842212</string>
+<string name="facebook_client_token">fc26e146d70b6584aff4b9cd779d95a9</string>
+</resources>
+
