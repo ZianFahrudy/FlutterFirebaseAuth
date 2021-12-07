@@ -41,7 +41,8 @@ class ProfilePage extends StatelessWidget {
               user.displayName!,
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
-            Text(user.email!)
+            // jika multiple login /provider in firebase, email null
+            // Text(controller.isFbLogin? controller.user.email : controller.email)
           ],
         ),
       ),

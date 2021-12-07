@@ -3,6 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:googlesignin/app/controller/my_controller.dart';
 
+import 'dynamic_page.dart';
+
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);
 
@@ -11,6 +13,10 @@ class SignInPage extends StatelessWidget {
     final controller = Get.put(MyController());
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => const DynamicPage()));
+      }),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

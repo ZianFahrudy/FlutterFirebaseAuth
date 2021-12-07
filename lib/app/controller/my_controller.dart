@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_print
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -8,6 +7,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 class MyController extends GetxController {
   final googleSignIn = GoogleSignIn();
   final fb = FacebookLogin();
+
+  GoogleSignIn get googleSignInGet => googleSignIn;
+  FacebookLogin get fbSignInGet => fb;
 
   GoogleSignInAccount? _user;
 
@@ -17,9 +19,9 @@ class MyController extends GetxController {
 
   String get email => _email!;
 
-  bool? _isFbLogin;
+  bool _isFbLogin = false;
 
-  bool get isFbLogin => _isFbLogin!;
+  bool get isFbLogin => _isFbLogin;
 
   Future googleLogin() async {
     final googleUser = await googleSignIn.signIn();
@@ -52,6 +54,7 @@ class MyController extends GetxController {
   }
 
   Future facebookLogin() async {
+    /// [bisa pake ini jg lebih simpel]
     // final facebookLoginResult = await FacebookAuth.instance.login();
 
     // final facebookCredential =
@@ -59,8 +62,7 @@ class MyController extends GetxController {
 
     // await FirebaseAuth.instance.signInWithCredential(facebookCredential);
 
-   
-
+    /// [cara ini biar bisa liat log]
 // Log in
     final res = await fb.logIn(permissions: [
       FacebookPermission.publicProfile,
@@ -70,15 +72,18 @@ class MyController extends GetxController {
 // Check result status
     switch (res.status) {
       case FacebookLoginStatus.success:
+        _isFbLogin = true;
+
+        print(_isFbLogin);
+
         // Logged in
 
         // Send access token to server for validation and auth
         final FacebookAccessToken? accessToken = res.accessToken;
         final AuthCredential authCredential =
             FacebookAuthProvider.credential(accessToken!.token);
-        _isFbLogin = true;
         // final result =
-            await FirebaseAuth.instance.signInWithCredential(authCredential);
+        await FirebaseAuth.instance.signInWithCredential(authCredential);
 
         // Get profile data
         final profile = await fb.getUserProfile();
@@ -90,13 +95,12 @@ class MyController extends GetxController {
 
         // Get email (since we request email permission)
         final email = await fb.getUserEmail();
-        if (email == null) return;
+        if (email == null) return '';
         _email = email;
 
-        update();
-
         // But user can decline permission
- print('And your email is $email');
+        print('And your email is $email');
+        update();
 
         break;
       case FacebookLoginStatus.cancel:
@@ -109,6 +113,5 @@ class MyController extends GetxController {
     }
 
     update();
-
   }
 }
